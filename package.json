@@ -1,6 +1,6 @@
 {
 	"name": "pict-section-objecteditor",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Pict tree-based JSON object editor section",
 	"main": "source/Pict-Section-ObjectEditor.js",
 	"scripts": {
@@ -24,8 +24,8 @@
 		"pict-view": "^1.0.68"
 	},
 	"devDependencies": {
-		"pict": "^1.0.368",
-		"pict-docuserve": "^1.0.1",
+		"pict": "^1.0.369",
+		"pict-docuserve": "^1.3.2",
 		"quackage": "^1.2.3"
 	},
 	"mocha": {
