@@ -1,7 +1,7 @@
 {
 	"Name": "pict-section-objecteditor",
-	"Version": "1.0.1",
+	"Version": "1.0.3",
 	"Description": "Pict tree-based JSON object editor section",
-	"GeneratedAt": "2026-04-10T17:25:50.000Z",
-	"GitCommit": "42beb56"
+	"GeneratedAt": "2026-05-22T05:45:46.660Z",
+	"GitCommit": "fcc7648"
 }
