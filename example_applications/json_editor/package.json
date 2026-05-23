@@ -26,5 +26,13 @@
 		"pict": "^1.0.348",
 		"pict-application": "^1.0.19",
 		"pict-view": "^1.0.66"
+	},
+	"retold": {
+		"ExampleApplication": {
+			"Stage": true,
+			"Title": "JSON Editor",
+			"Summary": "Interactive object editor with inline editing, expand-by-depth controls, and six runtime CSS themes.",
+			"Complexity": "Intermediate"
+		}
 	}
 }
