@@ -1,5 +1,5 @@
 {
-	"Generated": "2026-05-23T01:51:12.424Z",
+	"Generated": "2026-05-25T03:27:00.712Z",
 	"Mode": "module",
 	"GitHubOrg": "stevenvelozo",
 	"DefaultBranch": "master",
@@ -91,6 +91,7 @@
 			"Usage-Plain-JavaScript.md",
 			"_brand.json",
 			"_cover.md",
+			"_playground.json",
 			"_sidebar.md",
 			"_version.json",
 			"examples/README.md",
@@ -98,6 +99,14 @@
 			"examples/json_editor/index.html",
 			"examples/json_editor/object_editor_example.min.js",
 			"index.html",
+			"playground/app.json",
+			"playground/appdata.json",
+			"playground/application.js",
+			"playground/pict.json",
+			"playground/runtime/pict-application.min.js",
+			"playground/runtime/pict-section-modal.min.js",
+			"playground/runtime/pict-section-objecteditor.min.js",
+			"playground/runtime/pict.min.js",
 			"retold-catalog.json",
 			"retold-keyword-index.json"
 		]

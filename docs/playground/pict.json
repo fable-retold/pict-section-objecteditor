@@ -1,0 +1,11 @@
+{
+	"Product": "ObjectEditorPlayground",
+	"ObjectEditorViewConfig":
+	{
+		"ObjectDataAddress":    "AppData.ConfigData",
+		"InitialExpandDepth":   2,
+		"Editable":             true,
+		"ShowTypeIndicators":   true,
+		"IndentPixels":         20
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"Name": "Object Editor Playground",
+	"Hash": "ObjectEditorPlayground",
+	"MainViewportViewIdentifier": "ObjectEditor",
+	"AutoRenderMainViewportViewAfterInitialize": true
+}
