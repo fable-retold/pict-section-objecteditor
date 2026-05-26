@@ -4,7 +4,7 @@
 
 - Read the full documentation for usage, configuration, and reference
 
-[GitHub](https://github.com/stevenvelozo/pict-section-objecteditor)
+[GitHub](https://github.com/fable-retold/pict-section-objecteditor)
 [Get Started](#pict-section-objecteditor)
 
 <!-- docuserve:examples:start -->

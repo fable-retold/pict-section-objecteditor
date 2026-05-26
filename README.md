@@ -1,6 +1,6 @@
 # Pict Section: Object Editor
 
-> **[&#9654; Read the Pict-Section-Objecteditor Documentation](https://stevenvelozo.github.io/pict-section-objecteditor/)** &mdash; interactive docs with the full API reference.
+> **[&#9654; Read the Pict-Section-Objecteditor Documentation](https://fable-retold.github.io/pict-section-objecteditor/)** &mdash; interactive docs with the full API reference.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -157,11 +157,11 @@ Uses Quackage to produce Browserified bundles.
 
 ## Related Packages
 
-- [pict](https://github.com/stevenvelozo/pict) - MVC application framework
-- [pict-view](https://github.com/stevenvelozo/pict-view) - View base class
-- [pict-template](https://github.com/stevenvelozo/pict-template) - Template engine
-- [pict-provider](https://github.com/stevenvelozo/pict-provider) - Data provider base class
-- [fable](https://github.com/stevenvelozo/fable) - Service infrastructure
+- [pict](https://github.com/fable-retold/pict) - MVC application framework
+- [pict-view](https://github.com/fable-retold/pict-view) - View base class
+- [pict-template](https://github.com/fable-retold/pict-template) - Template engine
+- [pict-provider](https://github.com/fable-retold/pict-provider) - Data provider base class
+- [fable](https://github.com/fable-retold/fable) - Service infrastructure
 
 ## License
 
