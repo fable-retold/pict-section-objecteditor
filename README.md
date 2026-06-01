@@ -2,7 +2,7 @@
 
 > **[Read the Pict-Section-Objecteditor Documentation](https://fable-retold.github.io/pict-section-objecteditor/)** - interactive docs with the full API reference.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[MIT License](LICENSE)
 
 A tree-based JSON object editor view for the Pict application framework. Provides an interactive, expandable tree interface for inspecting and editing arbitrary JSON data structures -- objects, arrays, strings, numbers, booleans, and nulls.
 
