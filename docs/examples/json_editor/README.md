@@ -1,23 +1,23 @@
-# JSON Editor — Interactive Object Editor with Six Themes
+# JSON Editor - Interactive Object Editor with Six Themes
 
 <!-- docuserve:example-launch:start -->
-> **[&#9654; Launch the live app](examples/json%5Feditor/index.html)** — runs in your browser, opens in a new tab.
+> **[Launch the live app](examples/json%5Feditor/index.html)** - runs in your browser, opens in a new tab.
 <!-- docuserve:example-launch:end -->
 
 A single-page playground for `pict-section-objecteditor`. Renders a
 deeply-nested fictional server configuration into a collapsible,
 inline-editable tree with type indicators, add/remove/reorder
 controls, and a theme switcher that swaps between six radically
-different visual styles — Basic, Midnight (dark), Blueprint (technical
+different visual styles - Basic, Midnight (dark), Blueprint (technical
 graph paper), Solarized (data-grid), Terminal (retro green CRT), and
 Spreadsheet (Google-Sheets-like grid). The editor view is one
 subclass; everything else is configuration plus a CSS-only theme
 attribute toggle.
 
-The application code is *seven* statements — register a view, render
-it on initialise. Every interactive capability — toggle nodes, click
+The application code is *seven* statements - register a view, render
+it on initialise. Every interactive capability - toggle nodes, click
 to add, double-click to edit, drag-to-reorder, depth-N expansion,
-runtime theme switching — comes from the view's public API and
+runtime theme switching - comes from the view's public API and
 `data-theme` attribute.
 
 ## What it demonstrates
@@ -25,33 +25,33 @@ runtime theme switching — comes from the view's public API and
 | Capability | Where you see it |
 |------------|------------------|
 | Object editor view subclassed from `Pict-Section-ObjectEditor` | `class ExampleObjectEditorView extends libPictSectionObjectEditor` |
-| `ObjectDataAddress` binds the editor to AppData | `"ObjectDataAddress": "AppData.ConfigData"` — view reads from `this.fable.AppData.ConfigData` |
-| `InitialExpandDepth` for first-render layout | `"InitialExpandDepth": 2` — root + first-level objects open, deeper ones collapsed |
-| Editable mode with type-aware inputs | `"Editable": true` — double-click strings/numbers, single-click booleans, add/remove buttons appear |
-| Type indicator badges | `"ShowTypeIndicators": true` — `obj` / `arr` badges next to container keys |
+| `ObjectDataAddress` binds the editor to AppData | `"ObjectDataAddress": "AppData.ConfigData"` - view reads from `this.fable.AppData.ConfigData` |
+| `InitialExpandDepth` for first-render layout | `"InitialExpandDepth": 2` - root + first-level objects open, deeper ones collapsed |
+| Editable mode with type-aware inputs | `"Editable": true` - double-click strings/numbers, single-click booleans, add/remove buttons appear |
+| Type indicator badges | `"ShowTypeIndicators": true` - `obj` / `arr` badges next to container keys |
 | `expandAll()` / `collapseAll()` / `expandToDepth(N)` API | Toolbar buttons call straight into the view |
 | Six runtime CSS themes via `data-theme` attribute | `setTheme(name)` flips `data-theme` on the editor root; CSS in the HTML cascades the rest |
 | `var(--theme-color-*)` token system with fallbacks | The default theme uses `var(--theme-color-text-primary, #3D3229)` so themes can override via CSS custom properties |
-| Inline value editing with Enter / Escape | Double-click a value → input appears; Enter commits, Escape cancels |
-| Click-to-toggle for booleans | Booleans render as clickable text — one click flips true ↔ false |
-| Add property / add element / remove / move up / move down | Hover any row → action buttons appear in the right margin |
+| Inline value editing with Enter / Escape | Double-click a value -> input appears; Enter commits, Escape cancels |
+| Click-to-toggle for booleans | Booleans render as clickable text - one click flips true <-> false |
+| Add property / add element / remove / move up / move down | Hover any row -> action buttons appear in the right margin |
 | Macro templates for fine-grained HTML overrides | `MacroTemplates.Node.*` is a fragment-by-fragment map every host can swap |
 
 ## Key files
 
-- `ObjectEditor-Example-Application.js` — the entire host application.
+- `ObjectEditor-Example-Application.js` - the entire host application.
   Declares an `ExampleObjectEditorConfiguration` object literal,
   subclasses the section as `ExampleObjectEditorView`, registers it
   via `pict.addView(...)`, then renders it in `onAfterInitialize`.
   Also seeds `AppData.ConfigData` with a richly-typed sample
   configuration so the tree has something interesting to display on
   first paint.
-- `html/index.html` — the static shell. Contains all six themes as
+- `html/index.html` - the static shell. Contains all six themes as
   scoped CSS blocks (`.pict-objecteditor[data-theme="midnight"] ...`,
-  `.pict-objecteditor[data-theme="blueprint"] ...`, …), the toolbar
+  `.pict-objecteditor[data-theme="blueprint"] ...`, ...), the toolbar
   with expand/collapse/depth/theme controls, and the
   `<div id="ObjectEditorContainer"></div>` slot.
-- `package.json` — `name: "object_editor_example"` becomes the bundle
+- `package.json` - `name: "object_editor_example"` becomes the bundle
   filename `object_editor_example.min.js`, loaded after `pict.min.js`.
 
 ## The data model
@@ -116,7 +116,7 @@ Every primitive type is represented: strings, numbers, booleans,
 sample is intentionally heterogeneous so the editor exercises every
 rendering path on first paint.
 
-The editor doesn't hold its own copy — it reads and writes
+The editor doesn't hold its own copy - it reads and writes
 `this.fable.AppData.ConfigData` in place. Mutations from the buttons
 (remove, add, reorder, inline-edit commit) **mutate the AppData
 object directly**. Any other view, provider, or solver reading the
@@ -125,7 +125,7 @@ dispatch required.
 
 ---
 
-## Feature 1 — Subclassing the section view
+## Feature 1 - Subclassing the section view
 
 The section is consumed as a Pict view, not a provider. Hosts
 subclass it to inherit the rendering + interaction logic, then merge
@@ -163,30 +163,30 @@ const ExampleObjectEditorConfiguration = (
 });
 ```
 
-The subclass is empty — the demo doesn't need to override behavior,
+The subclass is empty - the demo doesn't need to override behavior,
 just wants its own `ViewIdentifier` so multiple object editors could
 coexist on the same page. The override block is the configuration
 delta; the section's `default_configuration` supplies CSS,
 `MacroTemplates`, `Templates`, and a fallback `Renderables` block.
 
 `ObjectDataAddress: "AppData.ConfigData"` is the most important option
-— it tells the view where to read its data from `this.fable`. Every
+- it tells the view where to read its data from `this.fable`. Every
 expand/collapse/edit operation resolves the path and reads/writes
 in-place.
 
 ---
 
-## Feature 2 — Initial render at depth 2
+## Feature 2 - Initial render at depth 2
 
 `InitialExpandDepth: 2` controls what's visible on first paint:
 
-- Depth 0 — only the root container shows; everything collapsed.
-- Depth 1 — the root expands, but `application.*` keys stay collapsed.
-- Depth 2 — `application.database`, `application.logging`,
+- Depth 0 - only the root container shows; everything collapsed.
+- Depth 1 - the root expands, but `application.*` keys stay collapsed.
+- Depth 2 - `application.database`, `application.logging`,
   `application.cache`, `application.metadata` all open, but `database.pool`
   / `logging.destinations[0]` / `metadata.tags` remain collapsed.
 
-This is the "see the shape" default — the user gets a high-level
+This is the "see the shape" default - the user gets a high-level
 overview without scrolling through hundreds of leaf rows. Click any
 toggle to expand a single subtree; click **Expand All** in the
 toolbar to fully unfurl.
@@ -199,7 +199,7 @@ the summary text, while the second-level scalar keys (`database.host`,
 
 ---
 
-## Feature 3 — The toolbar — public API in 6 buttons
+## Feature 3 - The toolbar - public API in 6 buttons
 
 The HTML toolbar's onclick handlers call the editor's public methods
 directly via the global `_Pict.views.ExampleObjectEditorView`:
@@ -225,7 +225,7 @@ directly via the global `_Pict.views.ExampleObjectEditorView`:
 `expandAll()` walks the data and marks every container path as
 expanded; `collapseAll()` empties the expanded-paths set;
 `expandToDepth(N)` clears + walks to depth N. After each, the editor
-re-renders the tree from the data in `AppData.ConfigData` — no DOM
+re-renders the tree from the data in `AppData.ConfigData` - no DOM
 mutation, just a template-driven repaint.
 
 These are the only host-facing methods you need for most navigation
@@ -237,7 +237,7 @@ handlers and via direct calls from cooperating hosts.
 
 ---
 
-## Feature 4 — Inline editing of leaves
+## Feature 4 - Inline editing of leaves
 
 Double-clicking a string or number leaf launches `beginEdit(path,
 type)`, which replaces the value span with an input element:
@@ -287,20 +287,20 @@ beginEdit(pPath, pType)
 }
 ```
 
-Two short input-lifecycle handlers — the only `addEventListener`
-calls in the section — track the live input element through commit
+Two short input-lifecycle handlers - the only `addEventListener`
+calls in the section - track the live input element through commit
 (blur or Enter) and cancel (Escape). After commit, the tree
 re-renders from the (now-updated) AppData; after cancel, the tree
 re-renders unchanged.
 
-Boolean leaves use a simpler `toggleBoolean(path)` — one click flips
+Boolean leaves use a simpler `toggleBoolean(path)` - one click flips
 the value and re-renders, no input lifecycle required. `null` is
 read-only by default; replace it with a typed value via the parent
 container's add control.
 
 ---
 
-## Feature 5 — Six themes via one CSS attribute
+## Feature 5 - Six themes via one CSS attribute
 
 The editor's root element carries class `pict-objecteditor`. Themes
 are scoped CSS overrides keyed by an attribute selector
@@ -324,7 +324,7 @@ function setTheme(pThemeName)
 ```
 
 Each theme is a full CSS override block sitting in `index.html`. The
-**Spreadsheet** theme — a Google Sheets-like grid look — flips the
+**Spreadsheet** theme - a Google Sheets-like grid look - flips the
 row separators, sets a serif-free font, and replaces the rounded
 action buttons with subtle outlined squares:
 
@@ -357,7 +357,7 @@ action buttons with subtle outlined squares:
    inline edit inputs, root-add controls ... */
 ```
 
-**Terminal** goes the other direction — black background, green CRT
+**Terminal** goes the other direction - black background, green CRT
 glow via `text-shadow`, monospace VT323 font, `text-transform:
 uppercase` on booleans and nulls:
 
@@ -387,14 +387,14 @@ uppercase` on booleans and nulls:
 }
 ```
 
-No JavaScript involved — the section's macro templates emit the same
+No JavaScript involved - the section's macro templates emit the same
 HTML regardless of theme; the theme's CSS reskins everything.
 
 ---
 
-## Feature 6 — Theme-aware default styling via CSS custom properties
+## Feature 6 - Theme-aware default styling via CSS custom properties
 
-The section's built-in CSS is **not hardcoded** — every color resolves
+The section's built-in CSS is **not hardcoded** - every color resolves
 through a `var(--theme-color-*, <fallback>)` chain. From
 `Pict-Section-ObjectEditor-DefaultConfiguration.js`:
 
@@ -418,13 +418,13 @@ through a `var(--theme-color-*, <fallback>)` chain. From
 ```
 
 This means the editor cooperates with `pict-section-theme` out of the
-box — drop the section into a themed shell and the editor's colors
+box - drop the section into a themed shell and the editor's colors
 follow the active theme automatically. The hand-picked hex fallbacks
 ensure the editor still looks coordinated when no theme provider is
 active (the case for this demo's **Basic** theme).
 
 The six demo themes deliberately ignore the custom-property system
-and override the colors directly — that's intentional, to show how a
+and override the colors directly - that's intentional, to show how a
 host can layer its own visual identity on top of the framework
 defaults. A production app with `pict-section-theme` installed would
 typically define theme tokens for the relevant `--theme-color-*`
@@ -432,9 +432,9 @@ properties instead.
 
 ---
 
-## Feature 7 — Macro templates for fragment-by-fragment overrides
+## Feature 7 - Macro templates for fragment-by-fragment overrides
 
-The editor's HTML is composed from a `MacroTemplates.Node` map —
+The editor's HTML is composed from a `MacroTemplates.Node` map -
 named template strings for every fragment of a row:
 
 ```js
@@ -481,50 +481,50 @@ with its own `ViewIdentifier`.
 ```bash
 cd example_applications/json_editor
 npm install
-npm run build      # quack build → dist/object_editor_example.min.js
+npm run build      # quack build -> dist/object_editor_example.min.js
 # Open dist/index.html in a browser, or serve dist/ statically.
 ```
 
-No backend, no schema validation, no persistence — every mutation
+No backend, no schema validation, no persistence - every mutation
 lives in `AppData.ConfigData` for the session. Reloading resets to
 the seed data.
 
 ## Things to try in the running app
 
-- **Open the configuration tree** — depth 2 is the default. Notice
+- **Open the configuration tree** - depth 2 is the default. Notice
   the type badges (`obj`, `arr`) on container keys and the child
   counts in the summary text (`{6} keys`, `[4]`).
-- **Click any `▼` / `▶` triangle** — expand/collapse just that
+- **Click any `▼` / `play` triangle** - expand/collapse just that
   subtree. Click again to revert. Indentation is `IndentPixels: 20`
   per depth level.
-- **Click `Expand All`** — every container opens, even
+- **Click `Expand All`** - every container opens, even
   `logging.destinations[0]`, `database.pool`, `metadata.tags`.
-- **Click `Depth 1`** — only the root expands; everything else
+- **Click `Depth 1`** - only the root expands; everything else
   collapses. Click `Depth 3` to go deeper.
-- **Double-click a string value** (e.g. `application.name`) — an input
+- **Double-click a string value** (e.g. `application.name`) - an input
   appears. Type a new value, press Enter to commit. Escape to cancel.
-- **Double-click a number** (`application.port`) — same input pattern
+- **Double-click a number** (`application.port`) - same input pattern
   with `type="number"`.
-- **Click a boolean** (`application.debug`) — flips instantly between
+- **Click a boolean** (`application.debug`) - flips instantly between
   `true` and `false`. No double-click needed.
-- **Hover over any row** — the action buttons appear in the right
+- **Hover over any row** - the action buttons appear in the right
   margin: `×` to remove, `+` to add (containers only), `▲ ▼` to
   reorder (array elements only). Hover the root container to see the
   `+ add property` action at the very top.
-- **Switch themes via the dropdown** — Basic → Midnight → Blueprint
-  → Solarized → Terminal → Spreadsheet. Each looks completely
+- **Switch themes via the dropdown** - Basic -> Midnight -> Blueprint
+  -> Solarized -> Terminal -> Spreadsheet. Each looks completely
   different; the HTML and behavior don't change.
-- **Click `+ add property`** on the root → type a new key, pick a
+- **Click `+ add property`** on the root -> type a new key, pick a
   type from the dropdown, hit Enter. A new node appears immediately;
   the data lives in `AppData.ConfigData`.
-- **Move array elements** — expand `application.features` or
+- **Move array elements** - expand `application.features` or
   `metadata.tags`, hover a row, click `▲` / `▼` to reorder.
 
 ## Takeaways
 
 1. **The editor is a data viewer, not a data store.** Mutations write
    straight to `AppData.<address>`. Hosts that need persistence,
-   undo/redo, or schema validation layer those on top — the view
+   undo/redo, or schema validation layer those on top - the view
    doesn't impose them.
 2. **`InitialExpandDepth` is the discoverability lever.** Depth 2 is
    the sweet spot for "show the shape, hide the detail" defaults;
@@ -540,14 +540,14 @@ the seed data.
 5. **The action surface is wide.** The toolbar shows three (expand /
    collapse / depth); the row hover shows another four (add / remove
    / move-up / move-down); the value spans support another two
-   (edit / toggle). All call into the view's public API — there's no
+   (edit / toggle). All call into the view's public API - there's no
    "what can the user do?" magic.
 
 ## Related documentation
 
-- [Overview](../../README.md) — what the section is and what it does
-- [Configuration Reference](../../Configuration.md) — every view option in detail
-- [API Reference](../../API-Reference.md) — every public method (`expandAll`, `collapseAll`, `expandToDepth`, `toggleNode`, `setValueAtPath`, `addObjectProperty`, `removeObjectProperty`, `addArrayElement`, …)
-- [Styling and Themes](../../Styling-and-Themes.md) — the CSS custom-property contract the section honors
-- [Usage in a Pict Application](../../Usage-Pict-Application.md) — host-side recipes (registering, theming, integrating)
-- [Usage in Plain JavaScript](../../Usage-Plain-JavaScript.md) — embedding without the full Pict bootstrap
+- [Overview](../../README.md) - what the section is and what it does
+- [Configuration Reference](../../Configuration.md) - every view option in detail
+- [API Reference](../../API-Reference.md) - every public method (`expandAll`, `collapseAll`, `expandToDepth`, `toggleNode`, `setValueAtPath`, `addObjectProperty`, `removeObjectProperty`, `addArrayElement`, ...)
+- [Styling and Themes](../../Styling-and-Themes.md) - the CSS custom-property contract the section honors
+- [Usage in a Pict Application](../../Usage-Pict-Application.md) - host-side recipes (registering, theming, integrating)
+- [Usage in Plain JavaScript](../../Usage-Plain-JavaScript.md) - embedding without the full Pict bootstrap

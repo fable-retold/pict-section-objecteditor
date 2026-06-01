@@ -10,5 +10,5 @@
 <!-- docuserve:examples:start -->
 | Example | Complexity | Launch |
 |---------|------------|--------|
-| [JSON Editor](examples/json%5Feditor/README.md) | Intermediate | [&#9654; Launch](examples/json%5Feditor/index.html) |
+| [JSON Editor](examples/json%5Feditor/README.md) | Intermediate | [Launch](examples/json%5Feditor/index.html) |
 <!-- docuserve:examples:end -->

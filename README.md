@@ -1,6 +1,6 @@
 # Pict Section: Object Editor
 
-> **[&#9654; Read the Pict-Section-Objecteditor Documentation](https://fable-retold.github.io/pict-section-objecteditor/)** &mdash; interactive docs with the full API reference.
+> **[Read the Pict-Section-Objecteditor Documentation](https://fable-retold.github.io/pict-section-objecteditor/)** - interactive docs with the full API reference.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
