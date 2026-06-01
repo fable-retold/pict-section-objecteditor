@@ -54,7 +54,7 @@ pict.addView('MyEditor',
 
 Pict Section ObjectEditor is part of the Pict ecosystem:
 
-- [pict](https://github.com/fable-retold/pict) - MVC application framework
-- [pict-view](https://github.com/fable-retold/pict-view) - View base class
-- [pict-template](https://github.com/fable-retold/pict-template) - Template engine
-- [fable](https://github.com/fable-retold/fable) - Service infrastructure
+- [pict](https://fable-retold.github.io/pict/) - MVC application framework
+- [pict-view](https://fable-retold.github.io/pict-view/) - View base class
+- [pict-template](https://fable-retold.github.io/pict-template/) - Template engine
+- [fable](https://fable-retold.github.io/fable/) - Service infrastructure
